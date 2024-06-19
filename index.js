@@ -3,6 +3,9 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import userRoutes from "./routes/userRoutes.js"
 import productRoutes from "./routes/productRoutes.js"
+import cookieParser from "cookie-parser"
+import cors from "cors"
+
 const app =express()
 
 dotenv.config()
@@ -10,7 +13,10 @@ mongoose.set("strictQuery",true)
 
 //using middlewares
 app.use(express.json())
-
+app.use(cookieParser())
+app.use(cors({
+    method:["GET","PUT","POST","DELETE"]
+}))
 
 const connect=async()=>{
     try {

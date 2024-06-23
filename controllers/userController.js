@@ -78,7 +78,7 @@ export const updateUser = async (req, res, next) => {
     const updatedUser = await User.findById(req.params.id);
     if (!updatedUser) return next(new ErrorHandler("User isnot found", 404));
 
-  const user=  await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json({
       success: true,
       message: "User has been updated Successfully",
